@@ -28,7 +28,7 @@
                 <small class="text-muted">${company.location} :: ${company.industry} :: ${company.website} :: Posted on ${vacancy.datePosted}</small>
                 <h3 class="card-title">${vacancy.title}</h3>
                 <p class="card-text">${vacancy.description}</p>
-                <a href="#" class="btn btn-light">See Details</a>
+                <a href="${baseUrl}/view-detail?id=${vacancy.vacancyId}" class="btn btn-light">See Details</a>
             </div>
         </div>
     </c:forEach>

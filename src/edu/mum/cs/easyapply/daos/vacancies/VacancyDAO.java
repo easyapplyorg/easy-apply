@@ -40,7 +40,7 @@ public class VacancyDAO {
             while(rs.next()) {
                 int vacancyId = rs.getInt("vacancy_id");
                 String title = rs.getString("title");
-                String description = rs.getString("description");
+                String description = rs.getString("description").substring(0, 300);
                 String datePosted = formatDate(rs.getTimestamp("date_posted"));
 
                 Company company = new Company();
@@ -58,6 +58,34 @@ public class VacancyDAO {
             System.err.println(e);
         }
         return list;
+    }
+
+    public Vacancy viewVacancyDetail(Integer vacancyId) {
+        Vacancy data = new Vacancy();
+        try {
+            Connection connection = dataSource.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM Vacancy, Company WHERE Vacancy.vacancy_id = ? AND Vacancy.company_id = Company.company_id order by date_posted DESC");
+            pstmt.setInt(1, vacancyId);
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()) {
+                String title = rs.getString("title");
+                String description = rs.getString("description");
+                String datePosted = formatDate(rs.getTimestamp("date_posted"));
+
+                Company company = new Company();
+                company.setCompanyId(rs.getInt("company_id"));
+                company.setName(rs.getString("name"));
+                company.setLocation(rs.getString("location"));
+                company.setIndustry(rs.getString("industry"));
+                company.setWebsite(rs.getString("website"));
+                company.setJoinedDate(formatDate(rs.getTimestamp("joined_date")));
+
+                data = new Vacancy(vacancyId, title, description, company, datePosted);
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        return data;
     }
 
     String formatDate(Date date) {
