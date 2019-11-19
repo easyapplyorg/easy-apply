@@ -1,6 +1,7 @@
-package edu.mum.cs.easyapply.servlets;
+package edu.mum.cs.easyapply.servlets.vacancies;
 
-import edu.mum.cs.easyapply.daos.VacancyDAO;
+import edu.mum.cs.easyapply.daos.vacancies.VacancyDAO;
+import edu.mum.cs.easyapply.model.Company;
 import edu.mum.cs.easyapply.model.Vacancy;
 
 import javax.servlet.ServletException;
@@ -12,8 +13,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "AddVacancyServlet", urlPatterns = {"/add-vacancy"})
-public class AddVacancyServlet extends HttpServlet {
+@WebServlet(name = "AddServlet", urlPatterns = {"/add-vacancy"})
+public class AddServlet extends HttpServlet {
 
     private VacancyDAO vacancyDAO;
 
@@ -35,15 +36,17 @@ public class AddVacancyServlet extends HttpServlet {
         }
         if (errors.size() > 0) {
             request.setAttribute("errors", errors);
-            request.getRequestDispatcher("vacancies/add-vacancy.jsp").forward(request, response);
+            request.getRequestDispatcher("vacancies/add.jsp").forward(request, response);
         } else {
             // todo: companyId should come from session
             // todo: redirect to listings page for logged in company
-            vacancyDAO.saveVacancy(new Vacancy(title, description, 1));
+            Company company = new Company();
+            company.setCompanyId(1);
+            vacancyDAO.saveVacancy(new Vacancy(title, description, company));
         }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("vacancies/add-vacancy.jsp").forward(request, response);
+        request.getRequestDispatcher("vacancies/add.jsp").forward(request, response);
     }
 }

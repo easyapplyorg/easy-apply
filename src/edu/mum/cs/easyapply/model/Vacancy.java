@@ -1,26 +1,30 @@
 package edu.mum.cs.easyapply.model;
 
+import java.util.Date;
+
 public class Vacancy {
     int vacancyId;
     String title;
     String description;
-    int companyId;
+    Company company;
+    String datePosted;
 
     public Vacancy() {
         super();
     }
 
-    public Vacancy(String title, String description, int companyId) {
+    public Vacancy(String title, String description, Company company) {
         this.title = title;
         this.description = description;
-        this.companyId = companyId;
+        this.company = company;
     }
 
-    public Vacancy(int vacancyId, String title, String description, int companyId) {
+    public Vacancy(int vacancyId, String title, String description, Company company, String datePosted) {
         this.vacancyId = vacancyId;
         this.title = title;
         this.description = description;
-        this.companyId = companyId;
+        this.company = company;
+        this.datePosted = datePosted;
     }
 
     public int getVacancyId() {
@@ -39,19 +43,27 @@ public class Vacancy {
         this.title = title;
     }
 
-    public String getDecription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDecription(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public int getCompanyId() {
-        return companyId;
+    public Company getCompany() {
+        return company;
     }
 
-    public void setCompanyId(int companyId) {
-        this.companyId = companyId;
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    public String getDatePosted() {
+        return datePosted;
+    }
+
+    public void setDatePosted(String datePosted) {
+        this.datePosted = datePosted;
     }
 }

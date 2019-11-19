@@ -5,7 +5,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-class DataSourceFactory {
+public class DataSourceFactory {
 
     private static DataSource dataSource = null;
 
@@ -19,7 +19,7 @@ class DataSourceFactory {
         }
     }
 
-    static DataSource getInstance() {
+    public static DataSource getInstance() {
         if (dataSource == null) new DataSourceFactory();
         return dataSource;
     }

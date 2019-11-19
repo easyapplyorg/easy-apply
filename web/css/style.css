@@ -10,7 +10,7 @@ body {
 }
 main {
     width: 80%;
-    margin: auto;
+    margin: 2rem auto;
 }
 textarea  {
     height: 16rem!important;
