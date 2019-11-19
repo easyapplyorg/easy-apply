@@ -19,11 +19,11 @@
     <div class="jumbotron">
         <h1 class="display-3">Easy Apply</h1>
         <h3>Your future begins here. No kidding.</h3>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <p class="lead">A friend recommended us. Your mum's sick of you taking up her couch space. Heck, your dog needs to eat.</p>
         <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <p>Bridging the gap between companies and talent for the past 20 years. Look no further.</p>
         <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Browse Openings</a>
         </p>
     </div>
 </main>
