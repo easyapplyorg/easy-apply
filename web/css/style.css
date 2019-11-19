@@ -12,6 +12,9 @@ main {
     width: 80%;
     margin: auto;
 }
+textarea  {
+    height: 16rem!important;
+}
 .footer {
     position: fixed;
     left: 0;
