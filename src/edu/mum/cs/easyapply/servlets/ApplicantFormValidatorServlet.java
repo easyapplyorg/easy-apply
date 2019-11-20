@@ -51,7 +51,7 @@ public class ApplicantFormValidatorServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 
-String date=LocalDate.now().format(DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy"));
+
 		String firstName= request.getParameter("firstName");
 		String lastName= request.getParameter("lastName");
 		String address= request.getParameter("address");
@@ -59,8 +59,7 @@ String date=LocalDate.now().format(DateTimeFormatter.ofPattern("EEEE, dd MMMM yy
 		String email= request.getParameter("email");
 		
 		
-		ApplicantData applicantFormData= new ApplicantData(firstName, lastName, address, phoneNumber, email, "");
-		request.setAttribute("applicantFormData", applicantFormData);
+
 		Map<String, String>errors =new HashMap<>();
 		Map<String, String>formValues =new HashMap<>();
 		
@@ -129,19 +128,13 @@ String date=LocalDate.now().format(DateTimeFormatter.ofPattern("EEEE, dd MMMM yy
 		} 
 		
 		else {
-		
-		
+
+			ApplicantData applicantFormData= new ApplicantData(firstName, lastName, address, phoneNumber, email, "");
+			request.setAttribute("applicantFormData", applicantFormData);
 		RequestDispatcher view = request.getRequestDispatcher("/ApplicantDataController");
 	view.forward(request, response);
 	
-		
-		
-		
-//	HttpSession session = request.getSession();	
-//		session.setAttribute("today", date);
-//	session.setAttribute("values", formValues);
-//	
-//		response.sendRedirect("ThankYou.jsp");
+
 	
 
 	}

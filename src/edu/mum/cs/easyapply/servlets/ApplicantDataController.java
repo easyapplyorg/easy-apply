@@ -1,6 +1,8 @@
 package edu.mum.cs.easyapply.servlets;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -9,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 import edu.mum.cs.easyapply.daos.ApplicantsDaos;
@@ -47,17 +50,14 @@ public class ApplicantDataController extends HttpServlet {
 		
 		ApplicantsDaos.saveApplicantFormData(applicantFormData);
 		System.out.println("saved");
-		
-		//ApplicantData savedFormData =  ApplicantsDaos.saveApplicantFormData(applicantFormData);
-		
-		//request.setAttribute("savedFormData", "helo");
-		RequestDispatcher rd = request.getRequestDispatcher("ThankYou.jsp");
-        rd.forward(request, response);
-        
-        
-        
+		String date= LocalDate.now().format(DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy"));
+		HttpSession session = request.getSession();
 
-		
+	session.setAttribute("today", date);
+	session.setAttribute("applicantFormData", applicantFormData);
+	response.sendRedirect("ThankYou.jsp");
+
+
 	}
 
 }

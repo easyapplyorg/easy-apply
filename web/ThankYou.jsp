@@ -22,13 +22,13 @@
                    
 			
 			<p class="text-md-right"> Time:${today}</p>
-			
-			<p> First Name :${savedFormData.firstName}</p>
-			<p> Last Name :${savedFormData.lastName}</p>
-			<p> Address:${savedFormData.address}</p> 
-			<p> Phone Number: ${savedFormData.phoneNumber}</p>
-			<p> Email: ${savedFormData.email}</p>
-			<h4> Thank You for your application , your details have been submitted successfully</h4>
+			<h5> Thank You for your application , your details have been submitted successfully</h5>
+			<p> First Name :${applicantFormData.firstName}</p>
+			<p> Last Name :${applicantFormData.lastName}</p>
+			<p> Address:${applicantFormData.address}</p>
+			<p> Phone Number: ${applicantFormData.phoneNumber}</p>
+			<p> Email: ${applicantFormData.email}</p>
+
 			
    
 		</div>
