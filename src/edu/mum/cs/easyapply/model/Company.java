@@ -24,47 +24,53 @@ public class Company {
         return companyId;
     }
 
-    public void setCompanyId(int companyId) {
+    public Company setCompanyId(int companyId) {
         this.companyId = companyId;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public Company setName(String name) {
         this.name = name;
+        return this;
     }
 
     public String getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public Company setLocation(String location) {
         this.location = location;
+        return this;
     }
 
     public String getIndustry() {
         return industry;
     }
 
-    public void setIndustry(String industry) {
+    public Company setIndustry(String industry) {
         this.industry = industry;
+        return this;
     }
 
     public String getWebsite() {
         return website;
     }
 
-    public void setWebsite(String website) {
+    public Company setWebsite(String website) {
         this.website = website;
+        return this;
     }
 
     public String getJoinedDate() {
         return joinedDate;
     }
 
-    public void setJoinedDate(String joinedDate) {
+    public Company setJoinedDate(String joinedDate) {
         this.joinedDate = joinedDate;
+        return this;
     }
 }

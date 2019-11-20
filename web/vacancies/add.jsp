@@ -8,10 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Easy Apply :: WAP 2019</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/spacelab/bootstrap.min.css" rel="stylesheet"
-          crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+    <%@ include file="../includes/head-content.jsp" %>
 </head>
 <body>
 <%@ include file="../includes/header.jsp" %>

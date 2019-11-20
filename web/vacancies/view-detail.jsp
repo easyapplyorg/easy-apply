@@ -8,10 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Easy Apply :: WAP 2019</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/spacelab/bootstrap.min.css" rel="stylesheet"
-          crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+    <%@ include file="../includes/head-content.jsp" %>
 </head>
 <body>
 <%@ include file="../includes/header.jsp" %>
@@ -24,7 +21,7 @@
         <div class="card-body text-secondary">
             <small class="text-muted">${company.location} :: ${company.industry} :: ${company.website} :: Posted
                 on ${vacancy.datePosted}</small>
-            <h3 class="card-title">${vacancy.title}</h3>
+            <h3 class="card-title">Job Description</h3>
             <p class="card-text">${vacancy.description}</p>
             <a id="submitApplication" href="${baseUrl}/apply?vid=${vacancy.vacancyId}" class="btn btn-light">Apply</a>
         </div>
