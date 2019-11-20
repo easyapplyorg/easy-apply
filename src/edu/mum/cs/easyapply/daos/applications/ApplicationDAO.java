@@ -31,7 +31,7 @@ public class ApplicationDAO {
         }
     }
 
-    String formatDate(Date date) {
+    String formatDate() {
         return new SimpleDateFormat("E, MMM dd YYYY HH:mm:ss, z").format(new Date());
     }
 }
