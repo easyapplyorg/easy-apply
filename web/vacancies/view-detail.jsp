@@ -18,14 +18,15 @@
 <main>
     <c:set var="company" value="${vacancy.company}"/>
     <h1>${vacancy.title}</h1>
-    <div class="card border-primary mb-3" style="min-height: 70%">
+    <div id="successMessage"></div>
+    <div class="card border-primary mb-3 detail">
         <div class="card-header">${company.name}</div>
         <div class="card-body text-secondary">
             <small class="text-muted">${company.location} :: ${company.industry} :: ${company.website} :: Posted
                 on ${vacancy.datePosted}</small>
             <h3 class="card-title">${vacancy.title}</h3>
             <p class="card-text">${vacancy.description}</p>
-            <a href="${baseUrl}/view-detail?id=${vacancy.vacancyId}" class="btn btn-light">Apply</a>
+            <a id="submitApplication" href="${baseUrl}/apply?vid=${vacancy.vacancyId}" class="btn btn-light">Apply</a>
         </div>
     </div>
 </main>

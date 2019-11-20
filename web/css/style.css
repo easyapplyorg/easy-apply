@@ -15,6 +15,9 @@ main {
 textarea  {
     height: 16rem!important;
 }
+.detail {
+    min-height: 50%
+}
 .footer {
     position: fixed;
     left: 0;

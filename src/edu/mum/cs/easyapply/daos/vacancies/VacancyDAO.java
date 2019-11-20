@@ -40,7 +40,8 @@ public class VacancyDAO {
             while(rs.next()) {
                 int vacancyId = rs.getInt("vacancy_id");
                 String title = rs.getString("title");
-                String description = rs.getString("description").substring(0, 300);
+                String desc = rs.getString("description");
+                String description = desc.length() > 300 ? desc.substring(0, 300) : desc;
                 String datePosted = formatDate(rs.getTimestamp("date_posted"));
 
                 Company company = new Company();
