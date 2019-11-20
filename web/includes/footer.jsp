@@ -1,8 +1,6 @@
 <footer class="footer">
-    <div id="footer-content">
-        <span class="text-muted">Easy Apply</span>
-        <span style="float:right;" class="text-muted">&copy; November 2019</span>
-    </div>
+    <span class="text-muted"><strong>Easy Apply ::</strong></span>
+    <span style="float:right;" class="text-muted"><strong>&copy; November 2019</strong></span>
 </footer>
 <script src="js/jquery.js"></script>
 <script src="js/app.js"></script>

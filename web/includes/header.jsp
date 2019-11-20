@@ -11,21 +11,18 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#" title="Easy Apply For Individuals">Individuals</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="./company.jsp" title="Easy Apply for Companies">Companies</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./contact-form">Contact Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./browse-messages">Browse Messages</a>
+                    <a class="nav-link" href="${baseUrl}/view-vacancies" title="Look for an available Opening">Browse Openings</a>
                 </li>
             </ul>
-                <button type="button" class="btn btn-light">Individual</button>
-                <button type="button" class="btn btn-secondary" onclick="window.location.href='company.jsp'">Company</button>
-                <button type="button" class="btn btn-success" >Log In</button>
+            <div class="login">
+                <button id="btn-login" type="button" class="btn btn-success" title="Sign In as an Individual or Company">Log In</button>
+            </div>
         </div>
     </nav>
 </header>
