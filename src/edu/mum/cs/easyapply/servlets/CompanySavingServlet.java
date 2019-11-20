@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "ContactSavingServlet" , urlPatterns = {"/saving-company"})
-public class ContactSavingServlet extends HttpServlet {
+public class CompanySavingServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Company company = (Company) request.getAttribute("company");
 
