@@ -15,7 +15,7 @@
 <main>
     <h1>Current Openings</h1>
     <c:if test="${size == 0}">
-        <p>Sadly, there no listed openings at the moment :-(</p>
+        <p>Sadly, there are no listed openings at the moment :-(</p>
     </c:if>
     <c:forEach var="vacancy" items="${vacancies}">
         <div class="card border-primary mb-3">

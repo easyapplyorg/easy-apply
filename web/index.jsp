@@ -16,11 +16,13 @@
     <div class="jumbotron">
         <h1 class="display-3">Easy Apply</h1>
         <h3>Your future begins here. No kidding.</h3>
-        <p class="lead">A friend recommended us. Your mum's sick of you taking up her couch space. Heck, your dog needs to eat.</p>
+        <p class="lead">A friend recommended us? Your mum's sick of you taking up her couch space? Or heck, your dog
+            needs to eat...</p>
         <hr class="my-4">
-        <p>Bridging the gap between companies and talent for the past 20 years. Look no further.</p>
+        <p>Look no further. We've been bridging the gap between companies and talent for the past 20 years.</p>
         <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Browse Openings</a>
+            <a class="btn btn-outline-primary btn-lg" href="${baseUrl}/view-vacancies" role="button"
+               title="Let's find you a gig">Browse Openings</a>
         </p>
     </div>
 </main>
