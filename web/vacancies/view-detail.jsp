@@ -23,7 +23,7 @@
                 on ${vacancy.datePosted}</small>
             <h3 class="card-title">Job Description</h3>
             <p class="card-text">${vacancy.description}</p>
-            <a id="submitApplication" href="${baseUrl}/apply?vid=${vacancy.vacancyId}" class="btn btn-light">Apply</a>
+            <a id="submitApplication" href="${baseUrl}/apply?vid=${vacancy.vacancyId}" class="btn btn-outline-primary">Apply for Opening</a>
         </div>
     </div>
 </main>

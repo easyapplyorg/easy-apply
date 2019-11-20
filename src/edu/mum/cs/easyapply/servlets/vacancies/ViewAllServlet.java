@@ -25,7 +25,17 @@ public class ViewAllServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
+        // handles search submission
+        String terms = request.getParameter("btSearch");
+        if (terms !=null && terms.equals("")) {
+            doGet(request, response);
+        } else {
+            List<Vacancy> vacancies = vacancyDAO.searchExistingVacancies(terms);
+            request.setAttribute("terms", terms);
+            request.setAttribute("size", vacancies.size());
+            request.setAttribute("vacancies", vacancies);
+            request.getRequestDispatcher("vacancies/view-all.jsp").forward(request, response);
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

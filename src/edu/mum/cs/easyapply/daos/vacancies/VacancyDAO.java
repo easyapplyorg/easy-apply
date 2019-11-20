@@ -44,6 +44,26 @@ public class VacancyDAO {
         return list;
     }
 
+    public List<Vacancy> searchExistingVacancies(String searchTerms) {
+        List<Vacancy> list = new ArrayList<>();
+        try {
+            Connection connection = dataSource.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM vacancy, company WHERE " +
+                    "vacancy.company_id = company.company_id AND (vacancy.title LIKE ? OR company.name LIKE ? " +
+                    "OR company.industry LIKE ? OR company.location LIKE ?) order by date_posted DESC");
+            String terms = String.format("%%%s%%", searchTerms);
+            pstmt.setString(1, terms);
+            pstmt.setString(2, terms);
+            pstmt.setString(3, terms);
+            pstmt.setString(4, terms);
+            ResultSet rs = pstmt.executeQuery();
+            list = getVacancies(rs);
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        return list;
+    }
+
     public List<Vacancy> getExistingVacancies(int companyId) {
         List<Vacancy> list = new ArrayList<>();
         try {
@@ -60,7 +80,7 @@ public class VacancyDAO {
 
     List<Vacancy> getVacancies(ResultSet rs) throws SQLException {
         List<Vacancy> list = new ArrayList<>();
-        while(rs.next()) {
+        while (rs.next()) {
             int vacancyId = rs.getInt("vacancy_id");
             String title = rs.getString("title");
             String desc = rs.getString("description");
@@ -88,7 +108,7 @@ public class VacancyDAO {
             PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM vacancy, company WHERE vacancy.vacancy_id = ? AND vacancy.company_id = company.company_id order by date_posted DESC");
             pstmt.setInt(1, vacancyId);
             ResultSet rs = pstmt.executeQuery();
-            while(rs.next()) {
+            while (rs.next()) {
                 String title = rs.getString("title");
                 String description = rs.getString("description");
                 String datePosted = formatDate(rs.getTimestamp("date_posted"));

@@ -13,22 +13,52 @@
 <body>
 <%@ include file="../includes/header.jsp" %>
 <main>
-    <h1>Current Openings</h1>
+    <h1>Available Openings</h1>
     <c:if test="${size == 0}">
-        <p>Sadly, there are no listed openings at the moment :-(</p>
+        <c:if test="${terms != null}">
+            <p>Sadly, no openings were found for ${terms} :-(</p>
+        </c:if>
+        <c:if test="${terms == null}">
+            <p>Sadly, there are no listed openings at the moment :-(</p>
+        </c:if>
     </c:if>
-    <c:forEach var="vacancy" items="${vacancies}">
-        <div class="card border-primary mb-3">
-            <c:set var="company" value="${vacancy.company}"/>
-            <div class="card-header">${company.name}</div>
-            <div class="card-body text-secondary">
-                <small class="text-muted">${company.location} :: ${company.industry} :: ${company.website} :: Posted on ${vacancy.datePosted}</small>
-                <h3 class="card-title">${vacancy.title}</h3>
-                <p class="card-text">${vacancy.description}</p>
-                <a href="${baseUrl}/view-detail?id=${vacancy.vacancyId}" class="btn btn-light">See Details</a>
+    <c:if test="${size > 0}">
+        <form method="post" action="${baseUrl}/view-vacancies">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search by Job Title, Company, Industry or Location"
+                       aria-describedby="btnSearch" id="btSearch" name="btSearch">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="submit">Search for
+                        Opening
+                    </button>
+                </div>
             </div>
-        </div>
-    </c:forEach>
+        </form>
+        <p>Feel free to refine what you're seeing using the form above</p>
+        <c:forEach var="vacancy" items="${vacancies}">
+            <c:set var="company" value="${vacancy.company}"/>
+            <div class="card border-primary mb-3">
+                <div class="card-header">${vacancy.title} - ${company.name}</div>
+                <div class="card-body text-secondary">
+                    <h6 class="card-subtitle mb-2 text-muted">${company.location} :: ${company.industry}
+                        :: ${company.website} :: Posted on ${vacancy.datePosted}</h6>
+                    <h3 class="card-title">${vacancy.title} - ${company.name}</h3>
+                    <p class="card-text">${vacancy.description}</p>
+                    <a href="${baseUrl}/view-detail?id=${vacancy.vacancyId}" class="btn btn-outline-primary">See
+                        Details</a>
+                </div>
+            </div>
+            <%--<div class="card border-primary mb-3">
+                <div class="card-body">
+                    <h4 class="card-title">${vacancy.title} - ${company.name}</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">${company.location}
+                        :: ${company.industry} :: ${company.website} :: Posted on ${vacancy.datePosted}</h6>
+                    <p class="card-text">${vacancy.description}</p>
+                    <a href="${baseUrl}/view-detail?id=${vacancy.vacancyId}" class="btn btn-outline-primary">See Details</a>
+                </div>
+            </div>--%>
+        </c:forEach>
+    </c:if>
 </main>
 <%@include file="../includes/footer.jsp" %>
 </body>
