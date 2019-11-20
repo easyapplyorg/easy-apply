@@ -1,4 +1,4 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <header>
     <c:set var="request" value="${pageContext.request}" />
     <c:set var="baseUrl" value="${request.scheme}://${request.serverName}:${request.serverPort}${request.contextPath}" />
@@ -24,8 +24,8 @@
                 </li>
             </ul>
                 <button type="button" class="btn btn-light">Individual</button>
-                <button type="button" class="btn btn-secondary">Company</button>
-                <button type="button" class="btn btn-success">Log In</button>
+                <button type="button" class="btn btn-secondary" onclick="window.location.href='company.jsp'">Company</button>
+                <button type="button" class="btn btn-success" >Log In</button>
         </div>
     </nav>
 </header>
