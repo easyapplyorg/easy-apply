@@ -18,12 +18,14 @@ public class CompanyDAO {
         try {
             Connection connection = dataSource.getConnection();
             System.out.println("Database connected");
-            PreparedStatement statement = connection.prepareStatement("insert into company(name,location,industry,website,joined_date) values (?,?,?,?,?)");
+            PreparedStatement statement = connection.prepareStatement("insert into company(name,location,industry,email,website,joined_date,password) values (?,?,?,?,?,?,?)");
             statement.setString(1,company.getName());
             statement.setString(2,company.getLocation());
             statement.setString(3,company.getIndustry());
-            statement.setString(4,company.getIndustry());
-            statement.setDate(5,formatDate(new Date()));
+            statement.setString(4,company.getEmail());
+            statement.setString(5,company.getWebsite());
+            statement.setDate(6,formatDate(new Date()));
+            statement.setString(7,company.getPassword());
             statement.executeUpdate();
             System.out.println("statement executed");
             statement.close();

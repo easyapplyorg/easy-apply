@@ -15,15 +15,19 @@ import java.util.List;
 public class CompanyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
+        String email = request.getParameter("email");
         String website = request.getParameter("website");
         String location = request.getParameter("location");
         String industry = request.getParameter("industry");
 
-        Company company = new Company(1,name,location,industry,website,"");
+        Company company = new Company(name,location,industry,email,website,"", "");
 
         List<String> errors = new ArrayList<>();
         if (company.getName()==null || company.getName().equals("")||isWhiteSpace(company.getName())){
             errors.add("Company name");
+        }
+        if (company.getEmail()==null || company.getEmail().equals("")||isWhiteSpace(company.getEmail())){
+            errors.add("Company email");
         }
         if (company.getWebsite()==null || company.getWebsite().equals("")||isWhiteSpace(company.getWebsite())){
             errors.add("Company website");
