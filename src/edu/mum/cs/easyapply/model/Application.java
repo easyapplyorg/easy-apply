@@ -1,30 +1,59 @@
 package edu.mum.cs.easyapply.model;
 
 public class Application {
-    int userId;
-    int vacancyId;
+    int applicationId;
+    User user;
+    Vacancy vacancy;
+    String applicationDate;
 
     public Application() {
     }
 
-    public Application(int userId, int vacancyId) {
-        this.userId = userId;
-        this.vacancyId = vacancyId;
+    public Application(User user, Vacancy vacancy) {
+        this.user = user;
+        this.vacancy = vacancy;
     }
 
-    public int getUserId() {
-        return userId;
+    public Application(int applicationId, User user, Vacancy vacancy, String applicationDate) {
+        this.applicationId = applicationId;
+        this.user = user;
+        this.vacancy = vacancy;
+        this.applicationDate = applicationDate;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public int getApplicationId() {
+        return applicationId;
     }
 
-    public int getVacancyId() {
-        return vacancyId;
+    public Application setApplicationId(int applicationId) {
+        this.applicationId = applicationId;
+        return this;
     }
 
-    public void setVacancyId(int vacancyId) {
-        this.vacancyId = vacancyId;
+    public User getUser() {
+        return user;
+    }
+
+    public Application setUser(User user) {
+        this.user = user;
+        return this;
+    }
+
+    public Vacancy getVacancy() {
+        return vacancy;
+    }
+
+    public Application setVacancy(Vacancy vacancy) {
+        this.vacancy = vacancy;
+        return this;
+    }
+
+    public String getApplicationDate() {
+        return applicationDate;
+    }
+
+    public Application setApplicationDate(String applicationDate) {
+        this.applicationDate = applicationDate;
+        return this;
     }
 }

@@ -31,39 +31,44 @@ public class Vacancy {
         return vacancyId;
     }
 
-    public void setVacancyId(int vacancyId) {
+    public Vacancy setVacancyId(int vacancyId) {
         this.vacancyId = vacancyId;
+        return this;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public Vacancy setTitle(String title) {
         this.title = title;
+        return this;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public Vacancy setDescription(String description) {
         this.description = description;
+        return this;
     }
 
     public Company getCompany() {
         return company;
     }
 
-    public void setCompany(Company company) {
+    public Vacancy setCompany(Company company) {
         this.company = company;
+        return this;
     }
 
     public String getDatePosted() {
         return datePosted;
     }
 
-    public void setDatePosted(String datePosted) {
+    public Vacancy setDatePosted(String datePosted) {
         this.datePosted = datePosted;
+        return this;
     }
 }

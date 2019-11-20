@@ -39,10 +39,12 @@ public class AddServlet extends HttpServlet {
             request.getRequestDispatcher("vacancies/add.jsp").forward(request, response);
         } else {
             // todo: companyId should come from session
-            // todo: redirect to listings page for logged in company
+            int companyId = 1;
             Company company = new Company();
-            company.setCompanyId(1);
-            vacancyDAO.saveVacancy(new Vacancy(title, description, company));
+            company.setCompanyId(companyId);
+            String formatted = description.replace("\n", "<br/>");
+            vacancyDAO.saveVacancy(new Vacancy(title, formatted, company));
+            request.getRequestDispatcher("/view-vacancies?cid=" +companyId).forward(request, response);
         }
     }
 

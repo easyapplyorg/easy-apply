@@ -13,9 +13,9 @@
 <body>
 <%@ include file="../includes/header.jsp" %>
 <main>
-    <h1>Current Openings</h1>
+    <h1>Listed Vacancies</h1>
     <c:if test="${size == 0}">
-        <p>Sadly, there no listed openings at the moment :-(</p>
+        <p>Looks like your company has no listed openings at the moment :-(</p>
     </c:if>
     <c:forEach var="vacancy" items="${vacancies}">
         <div class="card border-primary mb-3">
@@ -25,7 +25,7 @@
                 <small class="text-muted">${company.location} :: ${company.industry} :: ${company.website} :: Posted on ${vacancy.datePosted}</small>
                 <h3 class="card-title">${vacancy.title}</h3>
                 <p class="card-text">${vacancy.description}</p>
-                <a href="${baseUrl}/view-detail?id=${vacancy.vacancyId}" class="btn btn-light">See Details</a>
+                <a href="${baseUrl}/view-applications?vid=${vacancy.vacancyId}" class="btn btn-light">See Applications</a>
             </div>
         </div>
     </c:forEach>
