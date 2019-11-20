@@ -23,7 +23,7 @@ public class ApplicationDAO {
     public void saveApplication(Application data) {
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement pstmt = connection.prepareStatement("insert into Application (user_id, vacancy_id) values (?, ?)");
+            PreparedStatement pstmt = connection.prepareStatement("insert into application (user_id, vacancy_id) values (?, ?)");
             pstmt.setInt(1, data.getUser().getUserId());
             pstmt.setInt(2, data.getVacancy().getVacancyId());
             pstmt.executeUpdate();
@@ -36,8 +36,8 @@ public class ApplicationDAO {
         List<Application> list = new ArrayList<>();
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement pstmt = connection.prepareStatement("select * from Application, User, Vacancy where " +
-                    "Application.user_id = User.user_id AND Application.vacancy_id = Vacancy.vacancy_id AND Application.vacancy_id = ? AND Vacancy.company_id = ?");
+            PreparedStatement pstmt = connection.prepareStatement("select * from application, user, vacancy where " +
+                    "application.user_id = user.user_id AND application.vacancy_id = vacancy.vacancy_id AND application.vacancy_id = ? AND vacancy.company_id = ?");
             pstmt.setInt(1, vacancyId);
             pstmt.setInt(2, companyId);
             list = organizeData(pstmt);

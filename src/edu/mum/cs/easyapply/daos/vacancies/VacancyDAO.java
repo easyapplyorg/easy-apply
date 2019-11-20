@@ -21,7 +21,7 @@ public class VacancyDAO {
     public void saveVacancy(Vacancy data) {
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement pstmt = connection.prepareStatement("insert into Vacancy (title, description, company_id) values (?, ?, ?)");
+            PreparedStatement pstmt = connection.prepareStatement("insert into vacancy (title, description, company_id) values (?, ?, ?)");
             pstmt.setString(1, data.getTitle());
             pstmt.setString(2, data.getDescription());
             pstmt.setInt(3, data.getCompany().getCompanyId());
@@ -35,7 +35,7 @@ public class VacancyDAO {
         List<Vacancy> list = new ArrayList<>();
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM Vacancy, Company WHERE Vacancy.company_id = Company.company_id order by date_posted DESC");
+            PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM vacancy, company WHERE vacancy.company_id = company.company_id order by date_posted DESC");
             ResultSet rs = pstmt.executeQuery();
             list = getVacancies(rs);
         } catch (SQLException e) {
@@ -48,7 +48,7 @@ public class VacancyDAO {
         List<Vacancy> list = new ArrayList<>();
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM Vacancy, Company WHERE Vacancy.company_id = Company.company_id AND Company.company_id = ? order by date_posted DESC");
+            PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM vacancy, company WHERE vacancy.company_id = company.company_id AND company.company_id = ? order by date_posted DESC");
             pstmt.setInt(1, companyId);
             ResultSet rs = pstmt.executeQuery();
             list = getVacancies(rs);
@@ -85,7 +85,7 @@ public class VacancyDAO {
         Vacancy data = new Vacancy();
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM Vacancy, Company WHERE Vacancy.vacancy_id = ? AND Vacancy.company_id = Company.company_id order by date_posted DESC");
+            PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM vacancy, company WHERE vacancy.vacancy_id = ? AND vacancy.company_id = company.company_id order by date_posted DESC");
             pstmt.setInt(1, vacancyId);
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()) {

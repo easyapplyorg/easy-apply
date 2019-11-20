@@ -5,19 +5,22 @@ public class Company {
     String name;
     String location;
     String industry;
+    String email;
     String website;
     String joinedDate;
+    String password;
 
     public Company() {
     }
 
-    public Company(int companyId, String name, String location, String industry, String website, String joinedDate) {
-        this.companyId = companyId;
+    public Company(String name, String location, String industry, String email, String website, String joinedDate, String password) {
         this.name = name;
         this.location = location;
         this.industry = industry;
+        this.email = email;
         this.website = website;
         this.joinedDate = joinedDate;
+        this.password = password;
     }
 
     public int getCompanyId() {
@@ -56,6 +59,15 @@ public class Company {
         return this;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public Company setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
     public String getWebsite() {
         return website;
     }
@@ -71,6 +83,15 @@ public class Company {
 
     public Company setJoinedDate(String joinedDate) {
         this.joinedDate = joinedDate;
+        return this;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public Company setPassword(String password) {
+        this.password = password;
         return this;
     }
 }
