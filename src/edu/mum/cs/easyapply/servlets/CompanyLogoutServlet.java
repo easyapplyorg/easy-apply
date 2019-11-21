@@ -17,9 +17,9 @@ public class CompanyLogoutServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-        request.getRequestDispatcher("companylogin.jsp").forward(request,response);
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(false);
         session.invalidate();
         out.close();
+        request.getRequestDispatcher("index.jsp").forward(request,response);
     }
 }

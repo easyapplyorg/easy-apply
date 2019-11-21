@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "CompanyLoginServlet", urlPatterns = {"/companyLogin-servlet"})
+@WebServlet(name = "CompanyLoginServlet", urlPatterns = {"/company-login"})
 public class CompanyLoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String cname = request.getParameter("name");
@@ -40,8 +40,8 @@ public class CompanyLoginServlet extends HttpServlet {
             Company company=CompanyDAO.getCompany(cname,cemail,cpassword);
             int id = CompanyDAO.companyId(company);
             session.setAttribute("company",company);
-            //request.setAttribute("company",company);
-            response.sendRedirect("view-vacancies?cid="+id);
+            request.setAttribute("forward", true);
+            request.getRequestDispatcher("/view-vacancies?cid=" + id).forward(request, response);
         }
     }
 
@@ -50,7 +50,16 @@ public class CompanyLoginServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            Company company = (Company) session.getAttribute("company");
+            if (company != null) { // forward if already logged in
+                request.setAttribute("forward", true);
+                request.getRequestDispatcher("/view-vacancies?cid=" + company.getCompanyId()).forward(request, response);
+                return;
+            }
+        }
+        request.getRequestDispatcher("/companylogin.jsp").forward(request, response);
     }
 
 }

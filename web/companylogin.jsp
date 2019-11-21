@@ -22,7 +22,7 @@
                     <p>Username, Email or Password is wrong!!</p>
             </div>
         </c:if>
-        <form method="post" action="${baseUrl}/companyLogin-servlet">
+        <form method="post" action="${baseUrl}/company-login">
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-user"></i> </span>

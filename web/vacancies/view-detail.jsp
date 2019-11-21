@@ -32,12 +32,12 @@
                 on ${vacancy.datePosted}</small>
             <h3 class="card-title">Job Description</h3>
             <p class="card-text">${vacancy.description}</p>
-            <a id="submitApplication" href="${baseUrl}/apply?vacancy_id=${vacancy.vacancyId}">
+            <%--<a id="submitApplication" href="${baseUrl}/apply?vacancy_id=${vacancy.vacancyId}">--%>
                 <form method="post" action="${baseUrl}/apply">
                     <input type="hidden" name="vacancy_id" value="${vacancy.vacancyId}">
                     <button type="submit" class="btn btn-outline-primary">Apply for Opening</button>
                 </form>
-            </a>
+            <%--</a>--%>
         </div>
     </div>
 </main>

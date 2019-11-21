@@ -59,6 +59,12 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("user") != null) { // forward if already logged in
+            request.setAttribute("forward", true);
+            request.getRequestDispatcher("/view-vacancies").forward(request, response);
+            return;
+        }
         request.getRequestDispatcher("applicants/log-in.jsp").forward(request, response);
     }
 }
