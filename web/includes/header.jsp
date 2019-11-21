@@ -46,6 +46,20 @@
                     </c:otherwise>
                 </c:choose>
             </div>
+            <%--<c:choose>
+                <c:when test="${company!=null}">
+                    <div class="login">
+                        <form action="${baseUrl}/company-logout" method="get">
+                            <button id="btn-login" type="submit" class="btn btn-success" title="Company logout">LogOut</button>
+                        </form>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <div class="login">
+                        <button id="btn-login1" type="button" class="btn btn-success" title="Sign In as an Individual or Company">Log In</button>
+                    </div>
+                </c:otherwise>
+            </c:choose>--%>
         </div>
     </nav>
 </header>

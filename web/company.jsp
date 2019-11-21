@@ -55,15 +55,27 @@
                     </div>
                     <input class="form-control" placeholder="Industry" type="text" name="industry" value="${requestScope.company.industry}">
                 </div> <!-- form-group// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    <input class="form-control" placeholder="Enter Password" type="password" name="password" >
+                </div> <!-- form-group// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    <input class="form-control" placeholder="Confirm password" type="password" name="comfirmPassword" >
+                </div> <!-- form-group// -->
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block"> Create Account </button>
                 </div> <!-- form-group// -->
-                <p class="text-center">Have an account? <a href="">Log In</a> </p>
+                <p class="text-center">Have an account? <a href="companylogin.jsp">Log In</a> </p>
             </form>
 
         </article>
 
 </main>
-<%@include file="includes/footer.jsp" %>
+<%@include file="./includes/footer.jsp" %>
 </body>
 </html>

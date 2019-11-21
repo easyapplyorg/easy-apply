@@ -19,8 +19,10 @@ public class CompanyServlet extends HttpServlet {
         String website = request.getParameter("website");
         String location = request.getParameter("location");
         String industry = request.getParameter("industry");
+        String password = request.getParameter("password");
+        String confirmPassword = request.getParameter("comfirmPassword");
 
-        Company company = new Company(name,location,industry,email,website,"", "");
+        Company company = new Company(name,location,industry,email,website,"",confirmPassword);
 
         List<String> errors = new ArrayList<>();
         if (company.getName()==null || company.getName().equals("")||isWhiteSpace(company.getName())){
@@ -37,6 +39,11 @@ public class CompanyServlet extends HttpServlet {
         }
         if (company.getIndustry()==null || company.getIndustry().equals("")||isWhiteSpace(company.getIndustry())){
             errors.add("Company industry");
+        }
+        System.out.println(password);
+        System.out.println(confirmPassword);
+        if (company.getPassword()==null|| company.getPassword().equals("")||isWhiteSpace(company.getPassword()) || !company.getPassword().equals(password)){
+            errors.add("Wrong or empty password");
         }
         request.setAttribute("errors", errors);
         request.setAttribute("company",company);
