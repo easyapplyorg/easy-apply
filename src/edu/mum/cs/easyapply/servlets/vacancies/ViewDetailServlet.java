@@ -27,7 +27,7 @@ public class ViewDetailServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String vacancyParam = request.getParameter("id");
+        String vacancyParam = request.getParameter("vacancy_id");
         Integer vacancyId = Integer.parseInt(vacancyParam);
         Vacancy vacancy = vacancyDAO.viewVacancyDetail(vacancyId);
         request.setAttribute("vacancy", vacancy);

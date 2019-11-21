@@ -44,7 +44,7 @@
                         :: ${company.website} :: Posted on ${vacancy.datePosted}</h6>
                     <h3 class="card-title">${vacancy.title} - ${company.name}</h3>
                     <p class="card-text">${vacancy.description}</p>
-                    <a href="${baseUrl}/view-detail?id=${vacancy.vacancyId}" class="btn btn-outline-primary">See
+                    <a href="${baseUrl}/view-detail?vacancy_id=${vacancy.vacancyId}" class="btn btn-outline-primary">See
                         Details</a>
                 </div>
             </div>

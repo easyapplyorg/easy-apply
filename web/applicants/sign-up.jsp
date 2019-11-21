@@ -8,9 +8,7 @@
 
 <body>
 <%@ include file="../includes/header.jsp" %>
-
-<div class="container">
-
+<main>
     <h3>Sign Up</h3>
 
     <form method="post" action="${baseUrl}/applicant-signup">
@@ -55,7 +53,8 @@
 
         </div>
     </form>
+</main>
 
-    <%@include file="../includes/footer.jsp" %>
+<%@include file="../includes/footer.jsp" %>
 </body>
 </html>

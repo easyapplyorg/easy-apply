@@ -11,7 +11,7 @@ $(function () {
     </div>`;
 
     const link = $("#submitApplication");
-    link.click(submitApplication, event)
+    // link.click(submitApplication, event)
 });
 
 function submitApplication(event) {
@@ -21,9 +21,14 @@ function submitApplication(event) {
         type: "GET"
     })
         .done(function (response) {
-            alert.html("");
-            alert.append(content);
-            console.log("Response: " + response) // debug
+            if (data.redirect) {
+                // data.redirect contains the string URL to redirect to
+                window.location.href = data.redirect;
+            } else {
+                alert.html("");
+                alert.append(content);
+                console.log("Response: " + response) // debug
+            }
         })
         .fail(function (xhr, status, errorThrown) {
             console.log(`Error: ${errorThrown}\nStatus: ${status}`);
