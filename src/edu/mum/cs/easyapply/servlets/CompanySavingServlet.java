@@ -14,10 +14,10 @@ import java.io.IOException;
 public class CompanySavingServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Company company = (Company) request.getAttribute("company");
-
-        if (company!=null)CompanyDAO.saveCompany(company);
-        System.out.println("Company saved");
-
+        if (company!=null){
+            CompanyDAO.saveCompany(company);
+            response.sendRedirect("companylogin.jsp");
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
