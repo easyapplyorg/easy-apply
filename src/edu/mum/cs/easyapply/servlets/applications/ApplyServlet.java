@@ -31,17 +31,25 @@ public class ApplyServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // todo: get userId value from session else redirect to login/signup
         HttpSession session = request.getSession(false);
         if (session != null) {
             User user = (User) session.getAttribute("user");
             if (user != null) {
                 int userId = user.getUserId();
-                Integer vacancyId = Integer.parseInt(request.getParameter("vid"));
+                Integer vacancyId = Integer.parseInt(request.getParameter("vacancy_id"));
                 appDAO.saveApplication(new Application(new User().setUserId(userId), new Vacancy().setVacancyId(vacancyId)));
+                request.setAttribute("success", vacancyId);
+                request.getRequestDispatcher("/view-detail?vacancy_id=" + vacancyId).forward(request, response);
+            } else {
+                session.invalidate(); // bounce such sessions and redirect to login page as well
+                String baseUrl = String.format("%s://%s:%s%s", request.getScheme(), request.getServerName(),
+                        request.getServerPort(), request.getContextPath());
+                response.sendRedirect(baseUrl + "/applicant-login");
             }
         } else {
-            response.sendRedirect(request.getServletContext().getAttribute("baseUrl") + "/applicant-login");
+            String baseUrl = String.format("%s://%s:%s%s", request.getScheme(), request.getServerName(),
+                    request.getServerPort(), request.getContextPath());
+            response.sendRedirect(baseUrl + "/applicant-login");
         }
     }
 }

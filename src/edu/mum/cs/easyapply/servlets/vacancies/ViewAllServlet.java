@@ -26,6 +26,11 @@ public class ViewAllServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // handles search submission
+        Boolean isForward = (Boolean) request.getAttribute("forward");
+        if (isForward != null && isForward) {
+            doGet(request, response);
+            return;
+        }
         String terms = request.getParameter("btSearch");
         if (terms !=null && terms.equals("")) {
             doGet(request, response);

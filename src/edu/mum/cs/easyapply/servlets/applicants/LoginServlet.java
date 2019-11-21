@@ -51,6 +51,7 @@ public class LoginServlet extends HttpServlet {
             } else {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
+                request.setAttribute("forward", true);
                 request.getRequestDispatcher("/view-vacancies").forward(request, response);
             }
         }
