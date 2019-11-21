@@ -13,7 +13,16 @@
 <body>
 <%@ include file="../includes/header.jsp" %>
 <main>
-    <h1>Available Openings</h1>
+    <h1><span>Available Openings</span>
+        <c:if test="${sessionScope.company != null}">
+            <a href="${baseUrl}/add-vacancy">
+                <button class="btn btn-outline-primary text-right" title="Post an open position">Add Opening</button>
+            </a>
+            <a href="${baseUrl}/view-vacancies?cid=${sessionScope.company.companyId}">
+                <button class="btn btn-outline-primary text-right" title="Post an open position">My Openings</button>
+            </a>
+        </c:if>
+    </h1>
     <c:if test="${size == 0}">
         <c:if test="${terms != null}">
             <p>Sadly, no openings were found for ${terms} :-(</p>

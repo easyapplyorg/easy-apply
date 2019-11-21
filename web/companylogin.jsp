@@ -11,7 +11,7 @@
     <%@ include file="./includes/head-content.jsp" %>
 </head>
 <body>
-    <%@ include file="/includes/header.jsp" %>
+    <%@ include file="./includes/header.jsp" %>
 <main>
     <article class="card-body mx-auto" style="max-width: 400px;">
         <h4 class="card-title mt-3 text-center">Login In</h4>

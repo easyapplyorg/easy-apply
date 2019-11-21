@@ -67,48 +67,49 @@
                 </c:if>
             </ul>
 
-            <c:if test="${path.contains('company')}">
-                <div class="login">
-                    <c:choose>
-                        <c:when test="${sessionScope.company != null}">
-                            <c:set var="company" value="${sessionScope.company}"/>
-                            <span class="text-white">Greetings, ${company.name}!</span> &nbsp;
-                            <a href="${baseUrl}/company-logout">
-                                <button id="btn-login" type="submit" class="btn btn-success" title="Company logout">
-                                    LogOut
-                                </button>
-                            </a>
-                        </c:when>
-                        <c:otherwise>
-                            <a href="${baseUrl}/companylogin.jsp">
-                                <button id="btn-login1" type="button" class="btn btn-success"
-                                    title="Sign In as a Company">Log In
-                                </button>
-                            </a>
-                        </c:otherwise>
-                    </c:choose>
-                </div>
-            </c:if>
-
-            <c:if test="${!path.contains('company')}">
-                <div class="login">
-                    <c:choose>
-                        <c:when test="${sessionScope.user != null}">
-                            <c:set var="user" value="${sessionScope.user}"/>
-                            <span class="text-white">Greetings, ${user.firstName} ${user.lastName}!</span> &nbsp;
-                            <a href="${baseUrl}/applicant-logout">
-                                <button class="btn btn-success" title="Sign In as an Individual or Company">Log Out
-                                </button>
-                            </a>
-                        </c:when>
-                        <c:otherwise>
-                            <a href="${baseUrl}/applicant-login">
-                                <button class="btn btn-success" title="Sign In as an Individual">Log In</button>
-                            </a>
-                        </c:otherwise>
-                    </c:choose>
-                </div>
-            </c:if>
+            <c:choose>
+                <c:when test="${path.contains('company') || sessionScope.company != null}">
+                    <div class="login">
+                        <c:choose>
+                            <c:when test="${sessionScope.company != null}">
+                                <c:set var="company" value="${sessionScope.company}"/>
+                                <span class="text-white">Greetings, ${company.name}!</span> &nbsp;
+                                <a href="${baseUrl}/company-logout">
+                                    <button id="btn-login" type="submit" class="btn btn-success" title="Company logout">
+                                        LogOut
+                                    </button>
+                                </a>
+                            </c:when>
+                            <c:otherwise>
+                                <a href="${baseUrl}/companylogin.jsp">
+                                    <button id="btn-login1" type="button" class="btn btn-success"
+                                            title="Sign In as a Company">Log In
+                                    </button>
+                                </a>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
+                </c:when>
+                <c:otherwise> <%--test="${!path.contains('company') || sessionScope.user != null}"--%>
+                    <div class="login">
+                        <c:choose>
+                            <c:when test="${sessionScope.user != null}">
+                                <c:set var="user" value="${sessionScope.user}"/>
+                                <span class="text-white">Greetings, ${user.firstName} ${user.lastName}!</span> &nbsp;
+                                <a href="${baseUrl}/applicant-logout">
+                                    <button class="btn btn-success" title="Sign In as an Individual or Company">Log Out
+                                    </button>
+                                </a>
+                            </c:when>
+                            <c:otherwise>
+                                <a href="${baseUrl}/applicant-login">
+                                    <button class="btn btn-success" title="Sign In as an Individual">Log In</button>
+                                </a>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
+                </c:otherwise>
+            </c:choose>
 
         </div>
     </nav>

@@ -16,6 +16,7 @@
     <h1>Listed Vacancies</h1>
     <c:if test="${size == 0}">
         <p>Looks like your company has no listed openings at the moment :-(</p>
+        <p>Click <a href="${baseUrl}/add-vacancy">here</a> to post an opening</p>
     </c:if>
     <c:forEach var="vacancy" items="${vacancies}">
         <div class="card border-primary mb-3">

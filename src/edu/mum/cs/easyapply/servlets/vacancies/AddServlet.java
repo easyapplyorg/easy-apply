@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,13 +39,22 @@ public class AddServlet extends HttpServlet {
             request.setAttribute("errors", errors);
             request.getRequestDispatcher("vacancies/add.jsp").forward(request, response);
         } else {
-            // todo: companyId should come from session
+            // first, defaults to fall back to...
             int companyId = 1;
             Company company = new Company();
             company.setCompanyId(companyId);
+            // but companyId ought to come from session; so attempt to get it from there
+            HttpSession session = request.getSession(false);
+            if (session != null) {
+                company = (Company) session.getAttribute("company");
+                if (company != null) {
+                    companyId = company.getCompanyId();
+                }
+            }
             String formatted = description.replace("\n", "<br/>");
             vacancyDAO.saveVacancy(new Vacancy(title, formatted, company));
-            request.getRequestDispatcher("/view-vacancies?cid=" +companyId).forward(request, response);
+            request.setAttribute("forward", true);
+            request.getRequestDispatcher("/view-vacancies?cid=" + companyId).forward(request, response);
         }
     }
 

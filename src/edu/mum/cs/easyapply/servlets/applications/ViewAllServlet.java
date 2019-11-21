@@ -2,6 +2,7 @@ package edu.mum.cs.easyapply.servlets.applications;
 
 import edu.mum.cs.easyapply.daos.applications.ApplicationDAO;
 import edu.mum.cs.easyapply.model.Application;
+import edu.mum.cs.easyapply.model.Company;
 import edu.mum.cs.easyapply.model.User;
 
 import javax.servlet.ServletException;
@@ -34,16 +35,16 @@ public class ViewAllServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         if (session != null) {
             User user = (User) session.getAttribute("user");
+            Company company = (Company) session.getAttribute("company");
             if (user != null) {
                 int userId = user.getUserId();
                 applications = appDAO.getApplicationsForVacancy(userId);
                 request.setAttribute("size", applications.size());
                 request.setAttribute("applications", applications);
-            } else {
-                // todo: also get companyId value from session
-                Integer companyId = 1;
+            } else if (company != null) {
+                Integer companyId = company.getCompanyId();
                 String vacancyId = request.getParameter("vid");
-                applications = appDAO.getApplicationsForVacancy(companyId, Integer.parseInt(vacancyId));
+                applications = appDAO.getApplicationsForVacancy(companyId, Integer.parseInt(vacancyId == null ? "1" : vacancyId));
                 request.setAttribute("size", applications.size());
                 request.setAttribute("applications", applications);
             }

@@ -16,10 +16,11 @@ public class CompanyLogoutServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
         HttpSession session = request.getSession(false);
-        session.invalidate();
-        out.close();
+        if (session != null) {
+            session.removeAttribute("company");
+            session.invalidate();
+        }
         request.getRequestDispatcher("index.jsp").forward(request,response);
     }
 }

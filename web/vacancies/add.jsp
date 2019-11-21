@@ -13,7 +13,7 @@
 <body>
 <%@ include file="../includes/header.jsp" %>
 <main>
-    <h1>Add Vacancy</h1>
+    <h1>Add Opening</h1>
     <c:forEach var="error" items="${requestScope.errors}">
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 ${error}
@@ -32,7 +32,7 @@
             <label for="jobDescription">Job Description</label>
             <textarea class="form-control" id="jobDescription" name="jobDescription" placeholder="Day to day tasks...">${request.getParameter("message")}</textarea>
         </div>
-        <button type="submit" class="btn btn-secondary">Post Job</button>
+        <button type="submit" class="btn btn-secondary">Post Opening</button>
     </form>
 </main>
 <%@include file="../includes/footer.jsp" %>
