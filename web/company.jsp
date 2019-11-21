@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%@ include file="./includes/head-content.jsp" %>
+    <%@ include file="includes/head-content.jsp" %>
 </head>
 <body>
 <%@ include file="/includes/header.jsp" %>
@@ -64,6 +64,6 @@
         </article>
 
 </main>
-<%@include file="./includes/footer.jsp" %>
+<%@include file="includes/footer.jsp" %>
 </body>
 </html>

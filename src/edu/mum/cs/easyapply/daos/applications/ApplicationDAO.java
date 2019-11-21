@@ -32,6 +32,20 @@ public class ApplicationDAO {
         }
     }
 
+    public List<Application> getApplicationsForVacancy(int userId) {
+        List<Application> list = new ArrayList<>();
+        try {
+            Connection connection = dataSource.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement("select * from application, user, vacancy where " +
+                    "application.user_id = user.user_id AND application.vacancy_id = vacancy.vacancy_id AND application.user_id = ?");
+            pstmt.setInt(1, userId);
+            list = organizeData(pstmt);
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        return list;
+    }
+
     public List<Application> getApplicationsForVacancy(int companyId, int vacancyId) {
         List<Application> list = new ArrayList<>();
         try {
