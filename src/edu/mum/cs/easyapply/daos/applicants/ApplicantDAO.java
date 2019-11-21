@@ -1,6 +1,7 @@
 package edu.mum.cs.easyapply.daos.applicants;
 
 import edu.mum.cs.easyapply.daos.DataSourceFactory;
+import edu.mum.cs.easyapply.daos.PassUtils;
 import edu.mum.cs.easyapply.model.ApplicantData;
 import edu.mum.cs.easyapply.model.User;
 
@@ -38,7 +39,8 @@ public class ApplicantDAO {
             Connection connection = dataSource.getConnection();
             PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM user WHERE email = ? AND password = ?");
             pstmt.setString(1, email);
-            pstmt.setString(2, pwd);
+            String hashedPwd = PassUtils.getPasswordHash(pwd);
+            pstmt.setString(2, hashedPwd);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 user.setEmail(email)

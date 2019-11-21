@@ -58,7 +58,7 @@ CREATE TABLE `company` (
   `email` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   PRIMARY KEY (`company_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +67,7 @@ CREATE TABLE `company` (
 
 LOCK TABLES `company` WRITE;
 /*!40000 ALTER TABLE `company` DISABLE KEYS */;
-INSERT INTO `company` VALUES (1,'FinTech First LLC','Baltimore, MD','Technology','www.fintfirst.com','2019-11-19 12:41:51','',''),(2,'Gamers Paradise Inc.','Seattle, WA','IT','www.gparadiso.wa','2019-11-19 12:42:35','',''),(3,'Micro Systems LLC','Sunny Vale, CA','Software','www.microsystems.com','2019-11-20 00:00:00','support@microsystems.com',''),(4,'Greenwood Holdings Inc.','Sunny Vale, CA','Construction','www.greenholdings.com','2019-11-20 00:00:00','admin@greenholdings.com','password'),(5,'Micro Systems LLC','Boston, MA','Technology','www.microsystems.com','2019-11-21 00:00:00','admin@microsystems.com','password'),(6,'Google Inc.','Seattle, WA','Internet','www.googleinc.com','2019-11-21 00:00:00','admin@google.com','password');
+INSERT INTO `company` VALUES (1,'FinTech First LLC','Baltimore, MD','Technology','www.fintfirst.com','2019-11-19 12:41:51','',''),(2,'Gamers Paradise Inc.','Seattle, WA','IT','www.gparadiso.wa','2019-11-19 12:42:35','',''),(3,'Micro Systems LLC','Sunny Vale, CA','Software','www.microsystems.com','2019-11-20 00:00:00','support@microsystems.com',''),(4,'Greenwood Holdings Inc.','Sunny Vale, CA','Construction','www.greenholdings.com','2019-11-20 00:00:00','admin@greenholdings.com','password'),(5,'Micro Systems LLC','Boston, MA','Technology','www.microsystems.com','2019-11-21 00:00:00','admin@microsystems.com','password'),(6,'Google Inc.','Seattle, WA','Internet','www.googleinc.com','2019-11-21 00:00:00','admin@google.com','password'),(7,'Mumford & Sons','Memphis, TN','Fishing','www.mumford.com','2019-11-21 00:00:00','mummys@mumford.com','5f4dcc3b5aa765d61d8327deb882cf99');
 /*!40000 ALTER TABLE `company` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,7 +88,7 @@ CREATE TABLE `user` (
   `joined_date` datetime NOT NULL DEFAULT current_timestamp(),
   `password` varchar(45) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,7 +97,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'Anna','Short','10 Richmond Avenue, FT, TX','718 912 1120','ashort87@gmail.com','2019-11-19 11:37:14',''),(2,'James','Buchanan','Elainworth St, Richmond, VA','612 912 9120','buchanan.james@hotmail.com','2019-11-19 12:10:01',''),(3,'Moore','Smith','Jacksonville Rd, Redwood, MA','312 651 9912','smithtmoore@hotmail.com','2019-11-19 12:18:10',''),(4,'Julian','Ottoman','213 Herring St, Palm Beach, CA','321 891 1231','jul.ottoman@outlook.com','2019-11-19 12:37:34',''),(5,'PAUL','TUMWINE','P.O BOX 2126 KAMPALA','0775706690','paulatumwine@gmail.com','2019-11-20 17:26:19',''),(11,'Test','User','','','tuser@gmail.com','2019-11-20 18:39:50','password'),(12,'Test','Userr','','','tuserr@gmail.com','2019-11-20 18:44:41','password'),(13,'Trial','Users','','','tusers@outlook.com','2019-11-20 18:46:33','password'),(14,'Paul','Tumwine','1000 N 4TH ST','6418191132','ptumwine@mum.edu','2019-11-20 18:48:20','password'),(15,'Gilbert','TUMWINE','P.O BOX 2126 KAMPALA','0775706690','gilbert@gmail.com','2019-11-21 11:50:12','12345');
+INSERT INTO `user` VALUES (1,'Anna','Short','10 Richmond Avenue, FT, TX','718 912 1120','ashort87@gmail.com','2019-11-19 11:37:14',''),(2,'James','Buchanan','Elainworth St, Richmond, VA','612 912 9120','buchanan.james@hotmail.com','2019-11-19 12:10:01',''),(3,'Moore','Smith','Jacksonville Rd, Redwood, MA','312 651 9912','smithtmoore@hotmail.com','2019-11-19 12:18:10',''),(4,'Julian','Ottoman','213 Herring St, Palm Beach, CA','321 891 1231','jul.ottoman@outlook.com','2019-11-19 12:37:34',''),(5,'PAUL','TUMWINE','P.O BOX 2126 KAMPALA','0775706690','paulatumwine@gmail.com','2019-11-20 17:26:19',''),(11,'Test','User','','','tuser@gmail.com','2019-11-20 18:39:50','password'),(12,'Test','Userr','','','tuserr@gmail.com','2019-11-20 18:44:41','password'),(13,'Trial','Users','','','tusers@outlook.com','2019-11-20 18:46:33','password'),(14,'Paul','Tumwine','1000 N 4TH ST','6418191132','ptumwine@mum.edu','2019-11-20 18:48:20','password'),(15,'Gilbert','TUMWINE','P.O BOX 2126 KAMPALA','0775706690','gilbert@gmail.com','2019-11-21 11:50:12','12345'),(16,'PAUL','TUMWINE','P.O BOX 2126 KAMPALA','0775706690','admin@greenholdings.com','2019-11-21 14:10:22','5f4dcc3b5aa765d61d8327deb882cf99');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -137,4 +137,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-21 12:14:33
+-- Dump completed on 2019-11-21 14:28:36

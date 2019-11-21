@@ -1,6 +1,7 @@
 package edu.mum.cs.easyapply.daos.company;
 
 import edu.mum.cs.easyapply.daos.DataSourceFactory;
+import edu.mum.cs.easyapply.daos.PassUtils;
 import edu.mum.cs.easyapply.model.Company;
 
 import javax.sql.DataSource;
@@ -29,7 +30,8 @@ public class CompanyDAO {
             statement.setString(4,company.getEmail());
             statement.setString(5,company.getWebsite());
             statement.setDate(6,formatDate(new Date()));
-            statement.setString(7,company.getPassword());
+            String hashedPwd = PassUtils.getPasswordHash(company.getPassword());
+            statement.setString(7,hashedPwd);
             statement.executeUpdate();
             System.out.println("statement executed");
             statement.close();
@@ -41,10 +43,11 @@ public class CompanyDAO {
 
     public static boolean companyExists(String name,String email,String password){
         if (companyList()!=null){
+            String hashedPwd = PassUtils.getPasswordHash(password);
             Iterator<Company> iterator = companyList().iterator();
             while (iterator.hasNext()){
                 Company company=iterator.next();
-                if (company.getName().equals(name)&&company.getEmail().equals(email)&&company.getPassword().equals(password)){
+                if (company.getName().equals(name)&&company.getEmail().equals(email)&&company.getPassword().equals(hashedPwd)){
                     return true;
                 }
             }
@@ -53,10 +56,11 @@ public class CompanyDAO {
     }
     public static Company getCompany(String name,String email,String password){
         if (companyList()!=null){
+            String hashedPwd = PassUtils.getPasswordHash(password);
             Iterator<Company> iterator = companyList().iterator();
             while (iterator.hasNext()){
                 Company company=iterator.next();
-                if (company.getName().equals(name)&&company.getEmail().equals(email)&&company.getPassword().equals(password)){
+                if (company.getName().equals(name)&&company.getEmail().equals(email)&&company.getPassword().equals(hashedPwd)){
                     return company;
                 }
             }

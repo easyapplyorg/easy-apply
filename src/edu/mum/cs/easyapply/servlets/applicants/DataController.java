@@ -1,5 +1,6 @@
 package edu.mum.cs.easyapply.servlets.applicants;
 
+import edu.mum.cs.easyapply.daos.PassUtils;
 import edu.mum.cs.easyapply.daos.applicants.ApplicantDAO;
 import edu.mum.cs.easyapply.model.ApplicantData;
 
@@ -30,6 +31,9 @@ public class DataController extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ApplicantData applicantFormData = (ApplicantData) request.getAttribute("applicantFormData");
+
+        String hashedPwd = PassUtils.getPasswordHash(applicantFormData.getPassword());
+        applicantFormData.setPassword(hashedPwd);
 
         ApplicantDAO.saveApplicantFormData(applicantFormData);
 
