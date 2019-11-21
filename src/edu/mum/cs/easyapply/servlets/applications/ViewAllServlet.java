@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "ViewApplicationsServlet", urlPatterns = {"/view-applications"})
@@ -29,23 +30,27 @@ public class ViewAllServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // todo: get userId value from session -- it could be a user or a company
+        List<Application> applications = new ArrayList<>();
         HttpSession session = request.getSession(false);
         if (session != null) {
             User user = (User) session.getAttribute("user");
             if (user != null) {
                 int userId = user.getUserId();
-                List<Application> applications = appDAO.getApplicationsForVacancy(userId);
+                applications = appDAO.getApplicationsForVacancy(userId);
                 request.setAttribute("size", applications.size());
                 request.setAttribute("applications", applications);
             } else {
+                // todo: also get companyId value from session
                 Integer companyId = 1;
                 String vacancyId = request.getParameter("vid");
-                List<Application> applications = appDAO.getApplicationsForVacancy(companyId, Integer.parseInt(vacancyId));
+                applications = appDAO.getApplicationsForVacancy(companyId, Integer.parseInt(vacancyId));
                 request.setAttribute("size", applications.size());
                 request.setAttribute("applications", applications);
-                request.getRequestDispatcher("applications/view-all.jsp").forward(request, response);
             }
+        } else { // so that we still display something at least
+            request.setAttribute("size", applications.size());
+            request.setAttribute("applications", applications);
         }
+        request.getRequestDispatcher("applications/view-all.jsp").forward(request, response);
     }
 }

@@ -33,11 +33,6 @@ public class DataController extends HttpServlet {
 
         ApplicantDAO.saveApplicantFormData(applicantFormData);
 
-        /*// todo redirect to correct location: login page or dashboard
-        String baseUrl = String.format("%s://%s:%s%s", request.getScheme(), request.getServerName(),
-                request.getServerPort(), request.getContextPath());
-        response.sendRedirect(baseUrl + "/applicant-login");*/
-
         RequestDispatcher rd = request.getRequestDispatcher("/applicant-login");
         rd.forward(request, response);
     }

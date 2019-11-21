@@ -10,6 +10,10 @@ public class SampleFilter implements Filter {
     }
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
+        ServletContext context = req.getServletContext();
+        String baseUrl = String.format("%s://%s:%s%s", req.getScheme(), req.getServerName(),
+                req.getServerPort(), context.getContextPath());
+        context.setAttribute("baseUrl", baseUrl);
         chain.doFilter(req, resp);
     }
 

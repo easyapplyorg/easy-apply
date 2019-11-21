@@ -11,7 +11,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "ApplyServlet", urlPatterns = {"/apply"})
 public class ApplyServlet extends HttpServlet {
@@ -29,9 +31,17 @@ public class ApplyServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // todo: get userId value from session
-        Integer userId = 1;
-        Integer vacancyId = Integer.parseInt(request.getParameter("vid"));
-        appDAO.saveApplication(new Application(new User().setUserId(userId), new Vacancy().setVacancyId(vacancyId)));
+        // todo: get userId value from session else redirect to login/signup
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            User user = (User) session.getAttribute("user");
+            if (user != null) {
+                int userId = user.getUserId();
+                Integer vacancyId = Integer.parseInt(request.getParameter("vid"));
+                appDAO.saveApplication(new Application(new User().setUserId(userId), new Vacancy().setVacancyId(vacancyId)));
+            }
+        } else {
+            response.sendRedirect(request.getServletContext().getAttribute("baseUrl") + "/applicant-login");
+        }
     }
 }

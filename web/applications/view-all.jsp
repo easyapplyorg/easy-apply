@@ -15,7 +15,15 @@
 <main>
     <h1>Submitted Applications</h1>
     <c:if test="${size == 0}">
-        <p>Looks like no one has applied for this opening yet! :-(</p>
+        <c:choose>
+            <c:when test="${sessionScope.user != null}">
+                <p>Looks like you have not applied for any opening yet! :-(</p>
+                <p>Browse available openings <a href="${baseUrl}/view-vacancies">here</a></p>
+            </c:when>
+            <c:otherwise>
+                <p>Looks like no one has applied for this opening yet! :-(</p>
+            </c:otherwise>
+        </c:choose>
     </c:if>
     <c:forEach var="app" items="${applications}">
         <div class="card border-primary mb-3">

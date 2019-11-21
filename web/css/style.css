@@ -19,7 +19,7 @@ textarea  {
 .detail {
     min-height: 50%
 }
-.login > button {
+.login button {
     width: 8rem;
 }
 .footer {
